@@ -15,7 +15,7 @@ const contactSlice = createSlice({
     },
     deleteContact(state, action) {
       state.items = state.items.filter(item => item.id !== action.payload);
-      toast.warning(`Delete user!`, {position: toast.POSITION.TOP_LEFT});
+      toast.warning(`Delete contact!`, {position: toast.POSITION.TOP_LEFT});
     },
   },
 });

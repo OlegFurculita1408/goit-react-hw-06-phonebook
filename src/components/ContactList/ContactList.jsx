@@ -1,9 +1,7 @@
-// import PropTypes from "prop-types";
-import css from './ContactList.module.css';
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from '../redux/contactSlice';
-
+import css from './ContactList.module.css';
 
 
 const ContactList = () => {
@@ -11,8 +9,8 @@ const ContactList = () => {
     const contacts = useSelector(state => {
         return state.contacts.items.filter(item =>
             item.name.toLowerCase().trim().includes(state.filter.toLowerCase().trim())
-    );
-  });
+            );
+        });
         return (
             <>
             <ul className={css.contactList}>
@@ -24,7 +22,6 @@ const ContactList = () => {
                         </p>
                         <button className={css.itemBtn}
                                 onClick={() => dispatch(deleteContact(item.id))}>Delete</button>
-                                {/* handlerDelete */}
                         </li>
                     );
                 })}
@@ -32,14 +29,4 @@ const ContactList = () => {
             </>
         );
     }
-// ContactList.propTypes = {
-//     contacts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//         id: PropTypes.string,
-//         name: PropTypes.string.isRequired,
-//         number: PropTypes.string.isRequired,
-//         })
-//     ).isRequired,
-//     handlerDelete: PropTypes.func.isRequired,
-// };
 export default ContactList

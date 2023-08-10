@@ -1,5 +1,3 @@
-// import { useState } from "react";
-// import PropTypes from "prop-types";
 import css from './Form.module.css';
 import { nanoid } from "nanoid";
 import { useDispatch } from "react-redux";
@@ -22,43 +20,6 @@ const ContactForm = () => {
       e.target.reset();
 
     }
-//-------------------------------------- 
-//     const [name, setName] = useState('');
-//     const [number, setNumber] = useState('');
-//     // const [id, setId] = useState('');
-
-// const handlerChenge = (e) => {
-//     const {name, value} = e.target;
-
-//     switch (name) {
-//         case 'name':
-//             setName(value)
-//             break;
-//         case 'number':
-//             setNumber(value)
-//             break;
-
-//         default:
-//             return;
-//     }
-// }
-// -------------------------------------
-// const handlerSubmit = (e) => {
-//         e.preventDefault()
-//         const newContact = {
-//             id:nanoid(),
-//             name,
-//             number,
-//         };
-//         addContact(newContact);
-//             reset();
-//         };
-        
-//         const reset = () => {
-//             setName('')
-//             setNumber('')
-//         }
-
         return (
             <form className={css.container} onSubmit={handlerSubmit}>
                 <label htmlFor={nanoid()}>Name</label>
