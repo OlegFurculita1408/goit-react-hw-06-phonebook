@@ -1,16 +1,16 @@
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from '../redux/contactSlice';
+import { selectContacts } from "components/redux/selectors";
 import css from './ContactList.module.css';
+import { toast } from "react-toastify";
 
 
 const ContactList = () => {
     const dispatch = useDispatch();
-    const contacts = useSelector(state => {
-        return state.contacts.items.filter(item =>
-            item.name.toLowerCase().trim().includes(state.filter.toLowerCase().trim())
-            );
-        });
+    const contacts = useSelector(selectContacts);
+    const notify = () => toast.warning(`Delete contact!`, {position: toast.POSITION.TOP_LEFT});
+    
         return (
             <>
             <ul className={css.contactList}>
@@ -21,7 +21,8 @@ const ContactList = () => {
                             {item.name}: <span>{item.number}</span>
                         </p>
                         <button className={css.itemBtn}
-                                onClick={() => dispatch(deleteContact(item.id))}>Delete</button>
+                                onClick={() => dispatch(deleteContact(item.id),
+                                                 notify())}>Delete</button>
                         </li>
                     );
                 })}
